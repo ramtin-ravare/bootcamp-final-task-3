@@ -1,0 +1,154 @@
+@import url("/fonts.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark-mode, .dark-mode *));
+
+@theme {
+  --font-sans:
+    Inter, Vazirmatn, -apple-system, ui-sans-serif, system-ui,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-background-app: rgb(255 255 255);
+  --color-primary-900: rgb(74 109 255);
+  --color-primary-800: rgb(92 124 255);
+  --color-primary-700: rgb(110 138 255);
+  --color-primary-600: rgb(128 153 255);
+  --color-primary-500: rgb(146 167 255);
+  --color-primary-400: rgb(164 182 255);
+  --color-primary-300: rgb(183 197 255);
+  --color-primary-200: rgb(201 211 255);
+  --color-primary-100: rgb(219 226 255);
+  --color-primary-50: rgb(228 233 255);
+  --color-secondary-900: rgb(17 24 39);
+  --color-secondary-800: rgb(31 41 55);
+  --color-secondary-700: rgb(55 65 81);
+  --color-secondary-600: rgb(75 85 99);
+  --color-secondary-500: rgb(107 114 128);
+  --color-secondary-400: rgb(156 163 175);
+  --color-secondary-300: rgb(209 213 219);
+  --color-secondary-200: rgb(229 231 235);
+  --color-secondary-100: rgb(243 244 246);
+  --color-secondary-50: rgb(249 250 251);
+  --color-secondary-0: rgb(255 255 255);
+  --color-success: rgb(0 192 115);
+  --color-warning: rgb(255 153 0);
+  --color-error: rgb(255 71 87);
+  --color-red-500: rgb(239 68 68);
+  --color-red-300: rgb(252 165 165);
+}
+
+@variant dark {
+  --color-secondary-900: rgb(249 250 251);
+  --color-secondary-800: rgb(243 244 246);
+  --color-secondary-700: rgb(229 231 235);
+  --color-secondary-600: rgb(209 213 219);
+  --color-secondary-500: rgb(156 163 175);
+  --color-secondary-400: rgb(107 114 128);
+  --color-secondary-300: rgb(75 85 99);
+  --color-secondary-200: rgb(55 65 81);
+  --color-secondary-100: rgb(31 41 55);
+  --color-secondary-50: rgb(17 24 39);
+  --color-secondary-0: rgb(24 33 47);
+  --backdrop-color: rgb(0 0 0);
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    @apply bg-secondary-0 w-1.5 h-1.5;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary-500 rounded-lg cursor-pointer;
+  }
+  .container {
+    margin-inline: auto;
+    padding: 1rem;
+  }
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    user-select: none;
+  }
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  button {
+    cursor: pointer;
+    outline: none;
+  }
+  button:disabled {
+    cursor: default;
+    pointer-events: none;
+    box-shadow: none;
+    @apply bg-background-app/50;
+  }
+
+  /* inupt number */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textField;
+  }
+}
+
+@layer components {
+  .textField__input {
+    @apply rounded-xl border text-secondary-400 border-secondary-400 px-2 py-2 focus:bg-transparent
+    focus:ring-2 focus:ring-primary-800 focus:text-secondary-600 focus:border-primary-800 transition-all duration-300 ease-out;
+  }
+  .btn--primary {
+    @apply btn px-4 py-3 bg-primary-900 text-secondary-50 hover:bg-primary-800 shadow-lg shadow-secondary-300/20;
+  }
+  .btn--secondary {
+    @apply btn bg-secondary-300 text-secondary-900 hover:bg-secondary-100;
+  }
+  .btn--outline {
+    @apply btn border border-secondary-500 text-secondary-500 hover:text-secondary-700 hover:border-secondary-400;
+  }
+  .btn--danger {
+    @apply btn border border-rose-400 text-rose-400 hover:text-rose-500;
+  }
+  .btn--success {
+    @apply btn border border-green-400 text-green-400 hover:text-green-500;
+  }
+  .badge--primary {
+    @apply badge bg-primary-900 text-white;
+  }
+  .badge--secondary {
+    @apply badge bg-secondary-200 text-secondary-600;
+  }
+  .badge--outline {
+    @apply badge bg-transparent text-secondary-500 border border-secondary-500;
+  }
+  .badge--success {
+    @apply badge bg-green-500 text-white;
+  }
+  .badge--danger {
+    @apply badge bg-red-500 text-white;
+  }
+}
+
+@utility btn {
+  @apply py-2 px-3 rounded-xl transition-all duration-300 ease-out;
+}
+@utility badge {
+  @apply inline-block whitespace-nowrap px-2 py-0.5 rounded-full;
+}
